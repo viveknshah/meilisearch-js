@@ -399,7 +399,7 @@ class Client {
    * Creates a dump
    * @memberof MeiliSearch
    * @method createDump
-   * @returns {Promise<EnqueuedTask>} Promise returning object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise returning EnqueuedTask
    */
   async createDump(): Promise<EnqueuedTask> {
     const url = `dumps`

@@ -385,7 +385,7 @@ class Index<T = Record<string, any>> {
    * @param {Array<Document<T>>} documents Array of Document objects to add/replace
    * @param {DocumentOptions} options? Options on document addition
    *
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async addDocuments(
     documents: Array<Document<T>>,
@@ -405,7 +405,7 @@ class Index<T = Record<string, any>> {
    * @param {Array<Document<T>>} documents Array of Document objects to add/replace
    * @param {number} batchSize Size of the batch
    * @param {DocumentOptions} options? Options on document addition
-   * @returns {Promise<EnqueuedTasks>} Promise containing array of enqueued task objects for each batch
+   * @returns {Promise<EnqueuedTasks>} Promise containing array of <EnqueuedTask>s for each batch
    */
   async addDocumentsInBatches(
     documents: Array<Document<T>>,
@@ -427,7 +427,7 @@ class Index<T = Record<string, any>> {
    * @method updateDocuments
    * @param {Array<Document<Partial<T>>>} documents Array of Document objects to add/update
    * @param {DocumentOptions} options? Options on document update
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateDocuments(
     documents: Array<Document<Partial<T>>>,
@@ -447,7 +447,7 @@ class Index<T = Record<string, any>> {
    * @param {Array<Document<T>>} documents Array of Document objects to add/update
    * @param {number} batchSize Size of the batch
    * @param {DocumentOptions} options? Options on document update
-   * @returns {Promise<EnqueuedTasks>} Promise containing array of enqueued task objects for each batch
+   * @returns {Promise<EnqueuedTasks>} Promise containing array of <EnqueuedTask>s for each batch
    */
   async updateDocumentsInBatches(
     documents: Array<Document<Partial<T>>>,
@@ -468,7 +468,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method deleteDocument
    * @param {string | number} documentId Id of Document to delete
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async deleteDocument(documentId: string | number): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/documents/${documentId}`
@@ -484,7 +484,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method deleteDocuments
    * @param {string[] | number[]} documentsIds Array of Document Ids to delete
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async deleteDocuments(
     documentsIds: string[] | number[]
@@ -500,7 +500,7 @@ class Index<T = Record<string, any>> {
    * Delete all documents of an index
    * @memberof Index
    * @method deleteAllDocuments
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async deleteAllDocuments(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/documents`
@@ -532,7 +532,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateSettings
    * @param {Settings} settings Object containing parameters with their updated values
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateSettings(settings: Settings): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings`
@@ -547,7 +547,7 @@ class Index<T = Record<string, any>> {
    * Reset settings.
    * @memberof Index
    * @method resetSettings
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetSettings(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings`
@@ -578,7 +578,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateSynonyms
    * @param {Synonyms} synonyms Mapping of synonyms with their associated words
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateSynonyms(synonyms: Synonyms): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/synonyms`
@@ -591,7 +591,7 @@ class Index<T = Record<string, any>> {
    * Reset the synonym list to be empty again
    * @memberof Index
    * @method resetSynonyms
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetSynonyms(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/synonyms`
@@ -622,7 +622,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateStopWords
    * @param {StopWords} stopWords Array of strings that contains the stop-words.
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateStopWords(stopWords: StopWords): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/stop-words`
@@ -635,7 +635,7 @@ class Index<T = Record<string, any>> {
    * Reset the stop-words list to be empty again
    * @memberof Index
    * @method resetStopWords
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetStopWords(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/stop-words`
@@ -666,7 +666,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateRankingRules
    * @param {RankingRules} rankingRules Array that contain ranking rules sorted by order of importance.
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateRankingRules(rankingRules: RankingRules): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/ranking-rules`
@@ -679,7 +679,7 @@ class Index<T = Record<string, any>> {
    * Reset the ranking rules list to its default value
    * @memberof Index
    * @method resetRankingRules
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetRankingRules(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/ranking-rules`
@@ -710,7 +710,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateDistinctAttribute
    * @param {DistinctAttribute} distinctAttribute Field name of the distinct-attribute
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateDistinctAttribute(
     distinctAttribute: DistinctAttribute
@@ -725,7 +725,7 @@ class Index<T = Record<string, any>> {
    * Reset the distinct-attribute.
    * @memberof Index
    * @method resetDistinctAttribute
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetDistinctAttribute(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/distinct-attribute`
@@ -756,7 +756,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateFilterableAttributes
    * @param {FilterableAttributes} filterableAttributes Array of strings containing the attributes that can be used as filters at query time
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateFilterableAttributes(
     filterableAttributes: FilterableAttributes
@@ -771,7 +771,7 @@ class Index<T = Record<string, any>> {
    * Reset the filterable-attributes.
    * @memberof Index
    * @method resetFilterableAttributes
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetFilterableAttributes(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/filterable-attributes`
@@ -802,7 +802,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateSortableAttributes
    * @param {SortableAttributes} sortableAttributes Array of strings containing the attributes that can be used to sort search results at query time
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateSortableAttributes(
     sortableAttributes: SortableAttributes
@@ -817,7 +817,7 @@ class Index<T = Record<string, any>> {
    * Reset the sortable-attributes.
    * @memberof Index
    * @method resetSortableAttributes
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetSortableAttributes(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/sortable-attributes`
@@ -848,7 +848,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateSearchableAttributes
    * @param {SearchableAttributes} searchableAttributes Array of strings that contains searchable attributes sorted by order of importance(most to least important)
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateSearchableAttributes(
     searchableAttributes: SearchableAttributes
@@ -863,7 +863,7 @@ class Index<T = Record<string, any>> {
    * Reset the searchable-attributes.
    * @memberof Index
    * @method resetSearchableAttributes
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetSearchableAttributes(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/searchable-attributes`
@@ -894,7 +894,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateDisplayedAttributes
    * @param {DisplayedAttributes} displayedAttributes Array of strings that contains attributes of an index to display
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateDisplayedAttributes(
     displayedAttributes: DisplayedAttributes
@@ -909,7 +909,7 @@ class Index<T = Record<string, any>> {
    * Reset the displayed-attributes.
    * @memberof Index
    * @method resetDisplayedAttributes
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetDisplayedAttributes(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/displayed-attributes`
@@ -988,7 +988,7 @@ class Index<T = Record<string, any>> {
    * @memberof Index
    * @method updateFaceting
    * @param {Faceting} faceting Faceting index settings object
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async updateFaceting(faceting: Faceting): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/faceting`
@@ -1001,7 +1001,7 @@ class Index<T = Record<string, any>> {
    * Reset the faceting settings.
    * @memberof Index
    * @method resetFaceting
-   * @returns {Promise<EnqueuedTask>} Promise containing object of the enqueued task
+   * @returns {Promise<EnqueuedTask>} Promise containing EnqueuedTask
    */
   async resetFaceting(): Promise<EnqueuedTask> {
     const url = `indexes/${this.uid}/settings/faceting`
